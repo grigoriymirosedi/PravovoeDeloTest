@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/phoneInputFragment">
+
+    <fragment
+        android:id="@+id/phoneInputFragment"
+        android:name="com.example.pravovoedelotest.ui.fragments.PhoneInputFragment"
+        android:label="fragment_phone_input"
+        tools:layout="@layout/fragment_phone_input" >
+        <action
+            android:id="@+id/action_phoneInputFragment_to_codeInputFragment"
+            app:destination="@id/codeInputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/codeInputFragment"
+        android:name="com.example.pravovoedelotest.ui.fragments.CodeInputFragment"
+        android:label="CodeInputFragment" >
+        <action
+            android:id="@+id/action_codeInputFragment_to_phoneInputFragment"
+            app:destination="@id/phoneInputFragment" />
+        <argument
+            android:name="login"
+            app:argType="string" />
+        <argument
+            android:name="code"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_codeInputFragment_to_profileFragment"
+            app:popUpTo="@+id/codeInputFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/profileFragment" />
+
+    </fragment>
+    <argument
+        android:name="code"
+        app:argType="string" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.pravovoedelotest.ui.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="login"
+            app:argType="string" />
+        <argument
+            android:name="token"
+            app:argType="string" />
+    </fragment>
+</navigation>
